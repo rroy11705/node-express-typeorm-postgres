@@ -1,0 +1,85 @@
+{
+  "version": "1.0.0",
+  "engines": {
+    "node": ">=14.16",
+    "npm": ">=6.14.11"
+  },
+  "author": "Nilesh Kant",
+  "license": "MIT",
+  "name": "type-express",
+  "description": "REST API boilerplate builded with Express.js, Typescript, TypeORM and Postgres",
+  "keywords": [
+    "nodejs",
+    "express.js",
+    "typescript",
+    "typeorm",
+    "boilerplate",
+    "api",
+    "rest",
+    "restful",
+    "es2017",
+    "postgres",
+    "mysql"
+  ],
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/chai": "^5.0.0",
+    "@types/cors": "^2.8.17",
+    "@types/helmet": "^4.0.0",
+    "@types/mocha": "^10.0.9",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^22.8.1",
+    "@types/supertest": "^6.0.2",
+    "@typescript-eslint/eslint-plugin": "^8.12.0",
+    "@typescript-eslint/parser": "^8.12.0",
+    "chai": "^5.1.2",
+    "eslint": "^9.13.0",
+    "husky": "^9.1.6",
+    "mocha": "^10.7.3",
+    "nodemon": "^3.1.7",
+    "prettier": "^3.3.3",
+    "pretty-quick": "^4.0.0",
+    "supertest": "^7.0.0"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.3",
+    "cloudinary": "^2.5.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "express-validator": "^7.2.0",
+    "helmet": "^8.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.4",
+    "mysql": "^2.18.1",
+    "pg": "^8.13.1",
+    "reflect-metadata": "^0.2.2",
+    "sql.js": "^1.11.0",
+    "streamifier": "^0.1.1",
+    "ts-node": "^10.9.2",
+    "typeorm": "0.3.20",
+    "typescript": "^5.6.3"
+  },
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "build:start": "NODE_ENV=development npx ts-node build/src/index.js",
+    "build": "npx tsc --project ./",
+    "dev:win": "set NODE_ENV=development && nodemon",
+    "dev": "NODE_ENV=development nodemon start",
+    "test": "set NODE_ENV=test && mocha --watch --require ts-node/register",
+    "typeorm": "ts-node node_modules/typeorm/cli.js -d ./src/data-source.ts",
+    "migration:generate": "npm run typeorm migration:generate",
+    "migration:run": "npm run typeorm migration:run",
+    "migration:revert": "npm run typeorm migration:revert",
+    "migration:dop": "npm run typeorm migration:dop",
+    "docker:build": "docker build -t type-express .",
+    "docker:start": "docker-compose up -d"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  }
+}
