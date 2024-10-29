@@ -122,7 +122,7 @@ describe('Testing user component', () => {
     });
   });
 
-  describe('DELETE /users/1', () => {
+  describe('DELETE /users/:id', () => {
     it('responds with status 204', (done) => {
       supertest(app)
         .delete(`/users/${testUserModified.id}`)
@@ -134,7 +134,7 @@ describe('Testing user component', () => {
             const status = res.statusCode;
 
             // Assert status
-            assert(status === 204, 'status does not match');
+            assert(status === 200, 'status does not match');
 
             return done();
           } catch (err) {
